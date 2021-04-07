@@ -5,15 +5,6 @@ pipeline {
             steps {
                 git 'https://github.com/KietChan/test-okteto-deployment'
             }
-
-            // post {
-            //     // If Maven was able to run the tests, even if some of the test
-            //     // failed, record the test results and archive the jar file.
-            //     success {
-            //         junit '**/target/surefire-reports/TEST-*.xml'
-            //         archiveArtifacts 'target/*.jar'
-            //     }
-            // }
         }
         stage('Build') {
             steps {
@@ -21,9 +12,11 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build Docker') {
+        stage('Docker Processing') {
             steps {
-                sh 'Echo "Test"'
+                sh "cd app"
+                sh "docker build -f dockerfile -t lazyk9/knote:v0.0.$BUILD_NUMBER ."
+                sh "docker image push lazyk9/knote:v0.0.$BUILD_NUMBER"
             }
         }
     }
