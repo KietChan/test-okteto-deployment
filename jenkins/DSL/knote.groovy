@@ -6,16 +6,19 @@ pipeline {
                 git 'https://github.com/KietChan/test-okteto-deployment'
             }
         }
-        stage('Build') {
+        stage('NodeJS Build') {
             steps {
-                sh 'cd app'
-                sh 'npm install'
+                sh 'npm install app/'
             }
         }
-        stage('Docker Processing') {
+        stage('Docker Build') {
             steps {
-                sh "cd app"
-                sh "docker build -f dockerfile -t lazyk9/knote:v0.0.$BUILD_NUMBER ."
+                sh "docker build -f app/Dockerfile -t lazyk9/knote:v0.0.$BUILD_NUMBER ."
+               
+            }
+        }
+        stage('Docker Push') {
+            steps {
                 sh "docker image push lazyk9/knote:v0.0.$BUILD_NUMBER"
             }
         }
