@@ -14,12 +14,12 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo "Test"
-                sh "docker build -f app/Dockerfile -t lazyk9/knote:v0.0.$BUILD_NUMBER ."
+                sh "docker build -f app/Dockerfile -t lazyk9/knote:latest ."
             }
         }
         stage('Docker Push') {
             steps {
-                sh "docker image push lazyk9/knote:v0.0.$BUILD_NUMBER"
+                sh "docker image push lazyk9/knote:latest"
             }
         }
     }
