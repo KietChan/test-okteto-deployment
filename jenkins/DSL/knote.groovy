@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Clone') {
             steps {
                 git 'https://github.com/KietChan/test-okteto-deployment'
             }
@@ -14,6 +14,17 @@ pipeline {
             //         archiveArtifacts 'target/*.jar'
             //     }
             // }
+        }
+        stage('Build') {
+            steps {
+                sh 'cd app'
+                sh 'npm install'
+            }
+        }
+        stage('Build Docker') {
+            steps {
+                sh 'Echo "Test"'
+            }
         }
     }
 }
