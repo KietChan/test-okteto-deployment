@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
+                echo "Test"
                 sh "docker build -f app/Dockerfile -t lazyk9/knote:v0.0.$BUILD_NUMBER ."
-               
             }
         }
         stage('Docker Push') {
