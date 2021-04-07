@@ -22,5 +22,10 @@ pipeline {
                 sh "docker image push lazyk9/knote:$BUILD_NUMBER"
             }
         }
+        stage('Signal OKteto') {
+            steps {
+                sh "okteto pipeline deploy --repository=https://github.com/KietChan/test-okteto-deployment"
+            }
+        }
     }
 }
