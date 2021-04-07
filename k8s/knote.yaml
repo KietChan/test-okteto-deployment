@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: knote
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: knote
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: learnk8s/knote-js:2.0.0
+          image: lazyk9/knote
           ports:
             - containerPort: 3000
           env:
