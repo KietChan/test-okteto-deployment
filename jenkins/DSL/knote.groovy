@@ -20,9 +20,9 @@ pipeline {
         }
         stage('Git') {
             steps {
-                sh 'sed "s/__build_version__/$BUILD_NUMBER/g" k8s-dev/knote.yaml > k8s/knote.yaml'
-                sh 'sed "s/__build_version__/$BUILD_NUMBER/g" k8s-dev/minio.yaml > k8s/minio.yaml'
-                sh 'sed "s/__build_version__/$BUILD_NUMBER/g" k8s-dev/mongo.yaml > k8s/mongo.yaml'
+                sh 'sed "s/__build_version__/0.0.$BUILD_NUMBER/g" k8s-dev/knote.yaml > k8s/knote.yaml'
+                sh 'sed "s/__build_version__/0.0.$BUILD_NUMBER/g" k8s-dev/minio.yaml > k8s/minio.yaml'
+                sh 'sed "s/__build_version__/0.0.$BUILD_NUMBER/g" k8s-dev/mongo.yaml > k8s/mongo.yaml'
             }
         }
         stage('Deploy') {
