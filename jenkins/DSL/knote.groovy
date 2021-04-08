@@ -13,8 +13,7 @@ pipeline {
         }
         stage('Docker') {
             steps {
-                sh "docker build --platform linux/amd64 -f app/Dockerfile -t lazyk9/knote:latest -t lazyk9/knote:0.0.$BUILD_NUMBER ./app"
-                sh "docker image push lazyk9/knote:latest"
+                sh "docker build --platform linux/amd64 -f app/Dockerfile -t lazyk9/knote:0.0.$BUILD_NUMBER ./app"
                 sh "docker image push lazyk9/knote:0.0.$BUILD_NUMBER"
             }
         }
