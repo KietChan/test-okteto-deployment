@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: lazyk9/knote:0.0.12
+          image: lazyk9/knote:0.0.1
           ports:
             - containerPort: 3000
           env:
